@@ -1,34 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   Mago.h
- * Author: FACOMP
- *
- * Created on 20 de Janeiro de 2016, 17:17
- */
-
 #ifndef MAGO_H
 #define MAGO_H
 #include <iostream.h>
 
 class Mago{
 	
-private:
-    int fogo;
-    int raio;
-    int agua;
-    int ar;
-    int gelo;
-    int terra;
-    int trevas;
-};
+	private:
+    		int magiadeFogo = 250;
+    		int magiadeRaio = 300;
+		int magiadeAgua = 170;
+		int magiadeAr = 240;
+		int magiadeGelo = 220;
+		int magiadeTerra = 190;
+		int magiadeTrevas = 380;
 	
-public:
-    void atacar();
-    void defender();
-    void invocar();
+	public:
+    		void atacar();
+    		void defender();
+    		void invocar();
 };
