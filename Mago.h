@@ -10,21 +10,21 @@ using std::string;
 class Mago{
 	
 	public:
-	    Mago();
+		Mago();
 		
 		void Status();	
 		bool atacar(); 
-    	bool defender();
+    		bool defender();
     	
 	private:
 		string nome;
-        int forca;
-	    int defesa;
-	    int magia;
-	    int defesaEspecial;
-	    int velocidade;
-	    double mana, hp;
-	    bool sucesso;
+        	int forca;
+	    	int defesa;
+	    	int magia;
+	    	int defesaEspecial;
+	    	int velocidade;
+	    	double mana, hp;
+	    	bool sucesso;
 };
 
 #endif // MAGO_H
