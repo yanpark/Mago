@@ -8,8 +8,8 @@ using std::setw;
 
 Mago::Mago(){
 	this->nome="Gandalf";
-    this->hp = 1200;
-    this->mana = 2500;
+    	this->hp = 1200;
+    	this->mana = 2500;
 	this->forca = 0;
 	this->defesa = 162;
 	this->magia = 300;
