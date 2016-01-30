@@ -15,34 +15,20 @@ class Mago{
 		void verificarStatus(); // Verifica os status do Mago
 		void batalhar(bool opcao);
 		bool atacar(); 
-<<<<<<< HEAD
-    	bool defender();
-    	bool verificarItem(bool item); // Verifica se h· um item no ch„o
-=======
     		bool defender();
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
+    		bool verificarItem(bool item); // Verifica se h√° um item no ch√£o
+    		bool defender();
     	
 	private:
 		string nome;
-<<<<<<< HEAD
-        int forca;
-	    int defesa;
-	    int magia;
-	    int defesaEspecial;
-	    int velocidade;
-	    double mana, hp;
-	    bool sucesso, item;
-	    int opcao;
-	    
-=======
         	int forca;
 	    	int defesa;
 	    	int magia;
 	    	int defesaEspecial;
 	    	int velocidade;
 	    	double mana, hp;
-	    	bool sucesso;
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
+	    	bool sucesso, item;
+	    	int opcao;
 };
 
 #endif // MAGO_H
