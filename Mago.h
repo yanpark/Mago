@@ -12,9 +12,11 @@ class Mago{
 	public:
 	    Mago();
 		
-		void Status();	
+		void verificarStatus(); // Verifica os status do Mago
+		void batalhar(bool opcao);
 		bool atacar(); 
     	bool defender();
+    	bool verificarItem(bool item); // Verifica se há um item no chão
     	
 	private:
 		string nome;
@@ -24,7 +26,9 @@ class Mago{
 	    int defesaEspecial;
 	    int velocidade;
 	    double mana, hp;
-	    bool sucesso;
+	    bool sucesso, item;
+	    int opcao;
+	    
 };
 
 #endif // MAGO_H
