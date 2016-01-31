@@ -10,8 +10,15 @@ using std::setw;
 
 Mago::Mago(){
 	this->nome="Gandalf";
+<<<<<<< HEAD
     this->hp = 400;
     this->mana = 600;
+=======
+    	this->hp = 400;
+    	this->mana = 600;
+    	this->hp = 1200;
+    	this->mana = 2500;
+>>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 	this->forca = 0;
 	this->defesa = 162;
 	this->magia = 300;
