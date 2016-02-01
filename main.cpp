@@ -6,7 +6,7 @@ using std::cout;
 int main(int argc, char **argv){
 	bool item, opcao; 
 	
-	Mago luz;
+	Mago luz("Gandalf", 1);
 	
 	luz.verificarStatus();
 	system("cls");

@@ -10,41 +10,24 @@ using std::string;
 class Mago{
 	
 	public:
-	    Mago();
+	    Mago(const string &, int);
 		
 		void verificarStatus(); // Verifica os status do Mago
 		void batalhar();
 		bool atacar(); 
-<<<<<<< HEAD
-    	bool defender();
-    	bool verificarItem(bool item); // Verifica se h� um item no ch�o
-=======
     		bool defender();
     		bool verificarItem(bool item); // Verifica se há um item no chão
-    		bool defender();
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
     	
 	private:
 		string nome;
-<<<<<<< HEAD
-        int forca;
-	    int defesa;
-	    int magia;
-	    int defesaEspecial;
-	    int velocidade;
-	    double mana, hp;
-	    bool sucesso, item;
-	    int opcao;
-=======
         	int forca;
-	    	int defesa;
+	    	int defesa; // resistencia para ataques físicos
 	    	int magia;
-	    	int defesaEspecial;
+	    	int defesaEspecial; // resistência a ataques mágicos
 	    	int velocidade;
 	    	double mana, hp;
 	    	bool sucesso, item;
 	    	int opcao;
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 };
 
 #endif // MAGO_H
