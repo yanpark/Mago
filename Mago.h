@@ -10,7 +10,7 @@ using std::string;
 class Mago{
 	
 	public:
-		Mago();
+	    Mago(const string &, int);
 		
 		void verificarStatus(); // Verifica os status do Mago
 		void batalhar();
@@ -20,10 +20,10 @@ class Mago{
     	
 	private:
 		string nome;
-		int forca;
-	    	int defesa;
+        	int forca;
+	    	int defesa; // resistencia para ataques físicos
 	    	int magia;
-	    	int defesaEspecial;
+	    	int defesaEspecial; // resistência a ataques mágicos
 	    	int velocidade;
 	    	double mana, hp;
 	    	bool sucesso, item;
