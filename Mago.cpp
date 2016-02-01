@@ -9,9 +9,11 @@ using std::string;
 using std::setw;
 
 Mago::Mago(const string &nome, int level){
+	
 	this->nome=nome;
+	this->level = level;
 	this->hp = 198+level*2;
-    	this->mana = 297+level*3;
+    this->mana = 297+level*3;
 	this->forca = 0;
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
@@ -22,6 +24,7 @@ Mago::Mago(const string &nome, int level){
 void Mago::verificarStatus(){
 	
 	cout << "\n                          Status do Mago " << nome << "\n\n";
+	cout << setw(38) << "Level " << setw(5) << level <<'\n';
 	cout << setw(38) << "Forca " << setw(5) << forca <<'\n';
 	cout << setw(38) << "Defesa " << setw(5) << defesa <<'\n';
 	cout << setw(38) << "Magia " << setw(5) << magia <<'\n';
