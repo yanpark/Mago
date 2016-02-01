@@ -8,14 +8,15 @@ using std::cout;
 using std::string;
 using std::setw;
 
-Mago::Mago(){
-	this->nome="Gandalf";
-    	this->hp = 400;
-    	this->mana = 600;
-    	this->hp = 400;
-    	this->mana = 600;
-    	this->hp = 1200;
-    	this->mana = 2500;
+Mago::Mago(const string &nome, int level){
+	this->nome=nome;
+	this->hp = 198+level*2;
+    	this->mana = 297+level*3;
+	this->forca = 0;
+	this->defesa = 84+level;
+	this->magia = 145+level*3;
+	this->defesaEspecial = 115+level*2;
+	this->velocidade = 97+level;
 }
 
 void Mago::verificarStatus(){
