@@ -46,14 +46,14 @@ void Mago::batalhar(){
 		system("cls");
 		switch(opcao){
 			case 0: defender();
-					break;
+				break;
 			case 1: atacar();
-					if(hp>0 && monstro.hp_ini>0){
-						defender();
-					}
-					break;
+				if(hp>0 && monstro.hp_ini>0){
+					defender();
+				}
+				break;
 			default: cout << "\n\nOpcao invalida.\n" << endl;
-					break;
+				break;
 		}
 	}
 };
