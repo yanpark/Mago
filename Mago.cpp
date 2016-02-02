@@ -37,7 +37,7 @@ void Mago::verificarStatus(){
 
 void Mago::batalhar(){
 	
-	while(hp>0 && monstro.hp_ini>0){
+	do{
 		cout << nome << " entrou em batalha\n" << endl;
 		cout << "1. Atacar" << endl;
 		cout << "0. Defender\n" << endl;
@@ -47,7 +47,8 @@ void Mago::batalhar(){
 		switch(opcao){
 			case 0: defender();
 				break;
-			case 1: atacar();
+			case 1: system("cls");
+				atacar();
 				if(hp>0 && monstro.hp_ini>0){
 					defender();
 				}
@@ -56,6 +57,7 @@ void Mago::batalhar(){
 				break;
 		}
 	}
+	while((hp>0 && monstro.hp_ini>0) && opcao>1);
 };
 
 bool Mago::atacar(){
@@ -84,8 +86,8 @@ bool Mago::atacar(){
 	else{
 		cout << "Mana esgotada! " << nome << " nao pode atacar!\n" << endl;
 	}
-	cout << "HP de Gandalf: " << hp << endl;
-	cout << "Mana de Gandalf: " << mana << endl << endl;
+	cout << "HP de " << nome << ": " << hp << endl;
+	cout << "Mana de " << nome << ": " << mana << endl << endl;
 	cout << "HP do inimigo: " << monstro.hp_ini << endl << endl;
 	system("pause");
 	system("cls");
@@ -114,11 +116,10 @@ bool Mago::defender(){
 			hp = 0;
 		}
 	}
-	cout << "HP de Gandalf: " << hp << endl;
-	cout << "Mana de Gandalf: " << mana << endl << endl;
+	cout << "HP de " << nome << ": " << hp << endl;
+	cout << "Mana de " << nome << ": " << mana << endl << endl;
 	cout << "HP do inimigo: " << monstro.hp_ini << endl << endl;
 	system("pause");
-	system("cls");
 }
 
 bool Mago::verificarItem(bool item){
