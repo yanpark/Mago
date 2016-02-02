@@ -15,7 +15,15 @@ Mago::Mago(const string &nome, int level){
 	this->nome=nome;
 	this->level = level;
 	this->hp = 198+level*2;
+<<<<<<< HEAD
     this->mana = 297+level*3;
+=======
+<<<<<<< HEAD
+    this->mana = 297+level*3;
+=======
+	this->mana = 297+level*3;
+>>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
+>>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 	this->forca = 0;
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
