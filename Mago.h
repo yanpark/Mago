@@ -15,19 +15,23 @@ class Mago{
 		void verificarStatus(); // Verifica os status do Mago
 		void batalhar();
 		bool atacar(); 
-    		bool defender();
-    		bool verificarItem(bool item); // Verifica se h√° um item no ch√£o
+    	bool defender();
+    	bool verificarItem(bool); // Verifica se h√° um item no ch√£o
     	
 	private:
 		string nome;
-        	int forca;
-	    	int defesa; // resistencia para ataques f√≠sicos
-	    	int magia;
-	    	int defesaEspecial; // resist√™ncia a ataques m√°gicos
-	    	int velocidade;
-	    	double mana, hp;
-	    	bool sucesso, item;
-	    	int opcao;
+        int forca;
+	    int defesa; // resistÍncia a ataques fÌsicos
+	    int magia;
+	    int defesaEspecial; // resistÍncia a ataques m·gicos
+	    int mana, hp, dano, opcao, level;
+	    bool sucesso, item;
 };
 
+typedef struct{
+	int hp_ini = 100;
+	int forca_ini = 82;
+	int defesa_ini = 120;
+	int def_esp_ini = 78;	
+} Inimigo;
 #endif // MAGO_H
