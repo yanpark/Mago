@@ -38,6 +38,7 @@ void Mago::verificarStatus(){
 void Mago::batalhar(){
 	
 	do{
+		system("cls");
 		cout << nome << " entrou em batalha\n" << endl;
 		cout << "1. Atacar" << endl;
 		cout << "0. Defender\n" << endl;
@@ -47,8 +48,7 @@ void Mago::batalhar(){
 		switch(opcao){
 			case 0: defender();
 				break;
-			case 1: system("cls");
-				atacar();
+			case 1: atacar();
 				if(hp>0 && monstro.hp_ini>0){
 					defender();
 				}
@@ -56,8 +56,9 @@ void Mago::batalhar(){
 			default: cout << "\n\nOpcao invalida.\n" << endl;
 				break;
 		}
+		
 	}
-	while((hp>0 && monstro.hp_ini>0) && opcao>1);
+	while((hp>0 && monstro.hp_ini>0) && (opcao==0 || opcao==1));
 };
 
 bool Mago::atacar(){
@@ -69,13 +70,20 @@ bool Mago::atacar(){
 	if(mana>0){
 		if(sucesso){
 			cout << "Ataque bem sucedido!" << endl;
-			dano = (magia-monstro.def_esp_ini);
+			if(magia<=monstro.def_esp_ini){
+				dano = (monstro.def_esp_ini/(monstro.def_esp_ini-magia))/2;
+			}
+			else if(magia>monstro.def_esp_ini){
+				dano = (magia-monstro.def_esp_ini)*2;
+			}
 			monstro.hp_ini -= dano;
 			if(monstro.hp_ini <= 0){
-				cout << "\nInimigo derrotado!\n" << endl;
+				dano += monstro.hp_ini;
+				cout << "-" << dano << " de dano no inimigo\n" << endl; 
+				cout << "Inimigo derrotado!\n" << endl;
 				monstro.hp_ini = 0;
 			}
-			else if(monstro.hp_ini > 0){
+			else{
 				cout << "-" << dano << " de dano no inimigo\n" << endl;
 			}
 		}
@@ -90,11 +98,11 @@ bool Mago::atacar(){
 	cout << "Mana de " << nome << ": " << mana << endl << endl;
 	cout << "HP do inimigo: " << monstro.hp_ini << endl << endl;
 	system("pause");
-	system("cls");
 }
 
 bool Mago::defender(){
 	
+	system("cls");
 	cout << nome << " armou a defesa\n" << endl;
 	srand(time(NULL));
 	sucesso = rand()%2;
@@ -105,13 +113,19 @@ bool Mago::defender(){
 	}
 	else{
 		cout << nome << " sofreu dano!" << endl;
-		dano = defesa-(monstro.forca_ini/2);
+		if(monstro.forca_ini<=defesa){
+			dano = (defesa/(defesa-monstro.forca_ini))/2;
+		}
+		else if(monstro.forca_ini>defesa){
+			dano = (monstro.forca_ini-defesa)*2;
+		}
 		hp -= dano;
 		if(hp > 0){
 			cout << "-" << dano << " HP\n" << endl;
 		}
-		if(hp <= 0){
-			cout << '\n';
+		else{
+			dano += hp;
+			cout << "-" << dano << " HP\n" << endl; 
 			cout << nome << " foi derrotado!\nFim de jogo!\n" << endl;
 			hp = 0;
 		}
