@@ -2,7 +2,6 @@
 #include <string>
 
 using namespace std;
-using std::string;
 
 #ifndef MAGO_H
 #define MAGO_H
@@ -11,21 +10,28 @@ class Mago{
 	
 	public:
 	    Mago(const string &, int);
+	    Mago(const Mago &);
 		
 		void verificarStatus(); // Verifica os status de batalha do Mago
 		void batalhar();
 		bool atacar(); 
 		bool defender();
-		bool verificarItem(bool); // Verifica se hÃ¡ um item no chÃ£o
+		bool verificarItem(bool); // Verifica se há um item no chão
     	
 	private:
 		string nome;
 		int forca;
-	    	int defesa; // resistÃªncia a ataques fÃ­sicos
-	    	int magia;
-	    	int defesaEspecial; // resistÃªncia a ataques mÃ¡gicos
-	    	int mana, hp, dano, opcao, level;
-	    	bool sucesso, item;
+		int defesa; // resistência a ataques físicos
+	    int magia;
+	    int defesaEspecial; // resistência a ataques mágicos
+	    int hp;
+	    int mana;
+	    int level;
+	    int opcao;
+	    int dano;
+	    bool sucesso;
+	    bool item;
+	    static int numerodeMagos;
 };
 
 typedef struct{

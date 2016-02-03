@@ -10,6 +10,8 @@ using std::setw;
 
 Inimigo monstro;
 
+int Mago::numerodeMagos = 0;
+
 Mago::Mago(const string &nome, int level){
 	
 	this->nome=nome;
@@ -20,6 +22,18 @@ Mago::Mago(const string &nome, int level){
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
 	this->defesaEspecial = 115+level*2;
+	numerodeMagos++;
+}
+
+Mago::Mago(const Mago &magodeFora){
+	nome = magodeFora.nome;
+	level = magodeFora.level;
+	hp = magodeFora.hp;
+	mana = magodeFora.mana;
+	forca = magodeFora.forca;
+	defesa = magodeFora.defesa;
+	magia = magodeFora.magia;
+	defesaEspecial = magodeFora.defesaEspecial;
 }
 
 void Mago::verificarStatus(){
@@ -32,6 +46,7 @@ void Mago::verificarStatus(){
 	cout << setw(38) <<"Defesa Especial " << setw(5) << defesaEspecial <<'\n' << endl;
 	cout << setw(38) <<"HP " << setw(5) << hp <<'\n';
 	cout << setw(38) <<"Mana " << setw(5) << mana <<"\n\n";
+	cout << "Numero de Magos = " << numerodeMagos << endl << endl;
 	system("pause");
 }
 
