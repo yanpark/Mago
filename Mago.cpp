@@ -47,6 +47,7 @@ void Mago::verificarStatus(){
 	cout << setw(38) <<"HP " << setw(5) << hp <<'\n';
 	cout << setw(38) <<"Mana " << setw(5) << mana <<"\n\n";
 	cout << "Numero de Magos = " << numerodeMagos << endl << endl;
+	srand(time(NULL));
 	system("pause");
 }
 
@@ -80,7 +81,6 @@ bool Mago::atacar(){
 	
 	cout << nome << " atacou o inimigo\n-20 Mana\n" << endl;
 	mana -= 20;
-	srand(time(NULL));
 	sucesso = rand()%2;
 	if(mana>0){
 		if(sucesso){
@@ -119,7 +119,6 @@ bool Mago::defender(){
 	
 	system("cls");
 	cout << nome << " armou a defesa\n" << endl;
-	srand(time(NULL));
 	sucesso = rand()%2;
 	if(sucesso){
 		cout << "Defesa bem sucedida!" << endl;
@@ -153,7 +152,6 @@ bool Mago::defender(){
 
 bool Mago::verificarItem(bool item){
 	
-	srand(time(NULL));
 	item = rand()%2;
 	if(item){
 		cout << "Item recolhido!" << endl;
