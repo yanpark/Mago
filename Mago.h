@@ -16,14 +16,14 @@ class Mago{
 		void batalhar();
 		bool atacar(); 
 		bool defender();
-		bool verificarItem(bool); // Verifica se há um item no chão
+		bool verificarItem(bool); // Verifica se hÃ¡ um item no chÃ£o
     	
 	private:
 		string nome;
 		int forca;
-		int defesa; // resistência a ataques físicos
+		int defesa; // resistÃªncia a ataques fÃ­sicos
 	    int magia;
-	    int defesaEspecial; // resistência a ataques mágicos
+	    int defesaEspecial; // resistÃªncia a ataques mÃ¡gicos
 	    int hp;
 	    int mana;
 	    int level;
