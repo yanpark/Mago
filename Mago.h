@@ -24,6 +24,7 @@ class Mago{
 	private:
 		string nome;
 		int forca;
+<<<<<<< HEAD
 		int defesa; // resistência a ataques físicos
 	    int magia;
 	    int defesaEspecial; // resistência a ataques mágicos
@@ -37,6 +38,19 @@ class Mago{
 	    bool xp;
 	    static int numerodeMagos;
 	    const Data dataFormacaoMagica;
+=======
+		int defesa; // resistÃªncia a ataques fÃ­sicos
+	    int magia;
+	    int defesaEspecial; // resistÃªncia a ataques mÃ¡gicos
+	    int hp;
+	    int mana;
+	    int level;
+	    int opcao;
+	    int dano;
+	    bool sucesso;
+	    bool item;
+	    static int numerodeMagos;
+>>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 };
 
 typedef struct{
