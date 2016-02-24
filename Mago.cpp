@@ -12,13 +12,7 @@ Inimigo monstro;
 
 int Mago::numerodeMagos = 0;
 
-<<<<<<< HEAD
-Mago::Mago(const string &nome, int level)
-:dataFormacaoMagica()
-{
-=======
 Mago::Mago(const string &nome, int level){
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 	
 	this->nome = nome;
 	this->level = level;
@@ -28,13 +22,12 @@ Mago::Mago(const string &nome, int level){
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
 	this->defesaEspecial = 115+level*2;
+	equiparCajado();
 	numerodeMagos++;
 }
 
-<<<<<<< HEAD
-Mago::Mago(const Mago &magodeFora)
-:dataFormacaoMagica()
-{
+Mago::Mago(const Mago &magodeFora){
+	
 	nome = magodeFora.nome;
 	level = magodeFora.level;
 	hp = magodeFora.hp;
@@ -48,22 +41,33 @@ Mago::Mago(const Mago &magodeFora)
 void Mago::imprimirData() const{
 	
 	dataFormacaoMagica.print();
-=======
-Mago::Mago(const Mago &magodeFora){
-	nome = magodeFora.nome;
-	level = magodeFora.level;
-	hp = magodeFora.hp;
-	mana = magodeFora.mana;
-	forca = magodeFora.forca;
-	defesa = magodeFora.defesa;
-	magia = magodeFora.magia;
-	defesaEspecial = magodeFora.defesaEspecial;
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
+}
+
+void Mago::equiparCajado(){
+	
+	this->magia += cajadoMistico.Magia();
+	this->defesaEspecial += cajadoMistico.DefEsp();
+}
+
+ostream &operator<<(ostream &output, const Mago &magoDeFora){
+	
+	output << magoDeFora.nome <<"\nLevel: " << magoDeFora.level << endl << endl;
+	return output;
+}
+
+bool Mago::operator==(const Mago &magoDeFora) const{
+	
+	if((nome != magoDeFora.nome) || (level != magoDeFora.level)){
+		return false;
+	}
+	
+	return true;
 }
 
 void Mago::verificarStatus(){
 	
 	cout << "\n                          Status do Mago " << nome << "\n\n";
+	cajadoMistico.print();
 	cout << setw(38) << "Level " << setw(5) << level <<'\n';
 	cout << setw(38) << "Forca " << setw(5) << forca <<'\n';
 	cout << setw(38) << "Defesa " << setw(5) << defesa <<'\n';
@@ -71,14 +75,8 @@ void Mago::verificarStatus(){
 	cout << setw(38) <<"Defesa Especial " << setw(5) << defesaEspecial <<'\n' << endl;
 	cout << setw(38) <<"HP " << setw(5) << hp <<'\n';
 	cout << setw(38) <<"Mana " << setw(5) << mana <<"\n\n";
-<<<<<<< HEAD
 	imprimirData();
 	srand(time(NULL));
-=======
-	cout << "Numero de Magos = " << numerodeMagos << endl << endl;
-	srand(time(NULL));
-	system("pause");
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 }
 
 void Mago::menuPrincipal(){
@@ -144,10 +142,10 @@ bool Mago::atacar(){
 			monstro.hp_ini -= dano;
 			if(monstro.hp_ini <= 0){
 				dano += monstro.hp_ini;
-				cout << "-" << dano << " de dano no inimigo\n" << endl; 
-				cout << "Inimigo derrotado!" << endl;
+				cout << "-" << dano << " de dano no inimigo\n" << endl;
 				monstro.hp_ini = 0;
-				cout << "HP do inimigo: " << monstro.hp_ini << endl << endl;
+				cout << "HP do inimigo: " << monstro.hp_ini << endl;
+				cout << "Inimigo derrotado!" << endl << endl;
 				ganharXP(xp);
 				Mago(nome,level);
 				verificarStatus();
@@ -207,15 +205,18 @@ void Mago::ganharXP(bool xp){
 	if(xp){
 		level++;
 		cout << "Subida de nivel!\n" << endl;
+		hp += 2;
+		mana += 3;
+		forca += 0;
+		defesa += 1;
+		magia += 3;
+		defesaEspecial += 2;
 	}
 }
 
 bool Mago::verificarItem(bool item){
 	
-<<<<<<< HEAD
 	system("cls");
-=======
->>>>>>> branch 'master' of https://github.com/yanpark/Mago.git
 	item = rand()%2;
 	if(item){
 		cout << "Item recolhido!\n" << endl;

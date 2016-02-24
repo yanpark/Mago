@@ -8,7 +8,7 @@ using namespace std;
 class Data{
 	
 	public:
-		Data(int = 1,int = 1, int = 1990);
+		Data(int = 30, int = 1, int = 1990);
 		void print() const;
 		
 	private:

@@ -1,6 +1,5 @@
 #include <iostream>
 #include"Mago.h"
-#include"Data.h"
 
 using std::cout;
 
@@ -8,8 +7,17 @@ int main(int argc, char **argv){
 	bool item, opcao; 
 	
 	Mago luz("Gandalf", 1);
-	Mago trevas("Saruman", 10);
-	Mago terra(luz);
+	Mago trevas("Gandalf", 1);
+	
+	cout << "Mago de luz: " << luz;
+	cout << "Mago de trevas: " << trevas;
+	
+	if(luz == trevas){
+		cout << "Sao iguais\n" << endl;
+	}
+	else{
+		cout << "Nao sao iguais\n" << endl;
+	}
 	
 	luz.verificarStatus();
 	system("pause");
