@@ -10,8 +10,13 @@ using namespace std;
 class Mago{
 	
 	public:
-	    Mago(const string &, int);
+	    Mago(const string &, int, int const);
 	    Mago(const Mago &);
+	    ~Mago();
+	    
+	    friend ostream &operator<<(ostream &, const Mago &);
+		const Mago &operator=(const Mago &);
+		bool operator==(const Mago &) const;
 		
 		void menuPrincipal();
 		void verificarStatus(); // Verifica os status de batalha do Mago
@@ -19,13 +24,12 @@ class Mago{
 		bool batalhar();
 		bool atacar(); 
 		bool defender();
-		bool verificarItem(bool); // Verifica se há um item no chão
+		bool verificarItem(); // Verifica se há um item no chão
+		void inventarioDoMago();
 		void imprimirData() const;
 		void equiparCajado();
-		friend ostream &operator<<(ostream &, const Mago &);
-		const Mago &operator=(const Mago &);
-		bool operator==(const Mago &) const;
-    	
+		void guardarItem();
+		
 	private:
 		string nome;
 		int forca;
@@ -38,8 +42,15 @@ class Mago{
 	    int opcao;
 	    int dano;
 	    bool sucesso;
-	    bool item;
+	    string item;
 	    bool xp;
+	    string *inventario;
+	    string *nomeItens;
+	    int itemInventario = 7;
+	    int cont = 0;
+	    int quantItens;
+	    int nItens;
+	    int aux;
 	    static int numerodeMagos;
 	    const Data dataFormacaoMagica;
 	    Cajado cajadoMistico;

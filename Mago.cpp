@@ -12,7 +12,7 @@ Inimigo monstro;
 
 int Mago::numerodeMagos = 0;
 
-Mago::Mago(const string &nome, int level){
+Mago::Mago(const string &nome, int level, const int nItens):dataFormacaoMagica(){
 	
 	this->nome = nome;
 	this->level = level;
@@ -22,11 +22,25 @@ Mago::Mago(const string &nome, int level){
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
 	this->defesaEspecial = 115+level*2;
+	this->nItens = nItens;
+	this->aux = 0;
 	equiparCajado();
+	inventarioDoMago();
 	numerodeMagos++;
+	
+	if(nItens>0){
+		nomeItens = new string[nItens];
+		quantItens = nItens;
+		cout << "Espaco de itens no inventario de " << nome << ": " << quantItens << "\n\n";
+	}
+	else{
+		nomeItens = 0;
+		quantItens = 0;
+		cout << "Tamanho invalido\n\n";
+	}
 }
 
-Mago::Mago(const Mago &magodeFora){
+Mago::Mago(const Mago &magodeFora):dataFormacaoMagica(){
 	
 	nome = magodeFora.nome;
 	level = magodeFora.level;
@@ -36,17 +50,12 @@ Mago::Mago(const Mago &magodeFora){
 	defesa = magodeFora.defesa;
 	magia = magodeFora.magia;
 	defesaEspecial = magodeFora.defesaEspecial;
+	nItens = magodeFora.nItens;
 }
 
-void Mago::imprimirData() const{
-	
-	dataFormacaoMagica.print();
-}
-
-void Mago::equiparCajado(){
-	
-	this->magia += cajadoMistico.Magia();
-	this->defesaEspecial += cajadoMistico.DefEsp();
+Mago::~Mago(){
+	delete [] nomeItens;
+	delete [] inventario;
 }
 
 ostream &operator<<(ostream &output, const Mago &magoDeFora){
@@ -60,8 +69,18 @@ bool Mago::operator==(const Mago &magoDeFora) const{
 	if((nome != magoDeFora.nome) || (level != magoDeFora.level)){
 		return false;
 	}
-	
 	return true;
+}
+
+void Mago::imprimirData() const{
+	
+	dataFormacaoMagica.print();
+}
+
+void Mago::equiparCajado(){
+	
+	this->magia += cajadoMistico.Magia();
+	this->defesaEspecial += cajadoMistico.DefEsp();
 }
 
 void Mago::verificarStatus(){
@@ -90,7 +109,7 @@ void Mago::menuPrincipal(){
 	cout << "Escolha uma das opcoes acima: ";
 	cin >> opcao;
 	switch(opcao){
-		case 0: verificarItem(item);
+		case 0: verificarItem();
 				break;
 		case 1: batalhar();
 				break;
@@ -147,7 +166,7 @@ bool Mago::atacar(){
 				cout << "HP do inimigo: " << monstro.hp_ini << endl;
 				cout << "Inimigo derrotado!" << endl << endl;
 				ganharXP(xp);
-				Mago(nome,level);
+				Mago(nome,level,nItens);
 				verificarStatus();
 			}
 			else{
@@ -214,15 +233,40 @@ void Mago::ganharXP(bool xp){
 	}
 }
 
-bool Mago::verificarItem(bool item){
+void Mago::guardarItem(){
 	
-	system("cls");
-	item = rand()%2;
-	if(item){
+	if(aux >= 0 && aux < quantItens){
+		aux = rand()%itemInventario;
+		nomeItens[cont] = inventario[aux];
 		cout << "Item recolhido!\n" << endl;
+		cout << nomeItens[cont] << endl;
+		cont++;
 	}
 	else{
-		cout << "Nao ha item no chao!\n" << endl;
+		cout << "Inventario cheio!\n\n";
 	}
-	system("pause");
+}
+
+bool Mago::verificarItem(){
+	
+	system("cls");
+	sucesso = rand()%2;
+	if(sucesso){
+		guardarItem();
+	}
+	else{
+		cout << "Nao ha item no chao!" << endl;
+	}
+}
+
+void Mago::inventarioDoMago(){
+	
+	inventario = new string[itemInventario];
+	inventario[0] = "Potion +20";
+	inventario[1] = "Potion +50";
+	inventario[2] = "Potion +100";
+	inventario[3] = "Elixir +20";
+	inventario[4] = "Elixir +50";
+	inventario[5] = "Elixir +100";
+	inventario[6] = "Elixir +200";
 }
