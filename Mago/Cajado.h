@@ -9,8 +9,8 @@ class Cajado{
 	
 	public:
 		Cajado();
-		int Magia();
-		int DefEsp();
+		int magiaDoCajado();
+		int defEspDoCajado();
 		void print() const;
 		
 	private:

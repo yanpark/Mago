@@ -13,22 +13,22 @@ class Mago{
 	    Mago(const string &, int, int const);
 	    Mago(const Mago &);
 	    ~Mago();
-	    
-	    friend ostream &operator<<(ostream &, const Mago &);
-		const Mago &operator=(const Mago &);
-		bool operator==(const Mago &) const;
 		
 		void menuPrincipal();
-		void verificarStatus(); // Verifica os status de batalha do Mago
+		static const void verificarStatus(const Mago &); 
 		void ganharXP(bool);
 		bool batalhar();
 		bool atacar(); 
 		bool defender();
-		bool verificarItem(); // Verifica se há um item no chão
+		bool verificarItem();
 		void inventarioDoMago();
 		void imprimirData() const;
 		void equiparCajado();
 		void guardarItem();
+		
+		friend ostream &operator<<(ostream &, const Mago &);
+		const Mago &operator=(const Mago &);
+		bool operator==(const Mago &) const;
 		
 	private:
 		string nome;

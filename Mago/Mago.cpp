@@ -16,8 +16,8 @@ Mago::Mago(const string &nome, int level, const int nItens):dataFormacaoMagica()
 	
 	this->nome = nome;
 	this->level = level;
-	this->hp = 198+level*2;
-	this->mana = 297+level*3;
+	this->hp = 195+level*5;
+	this->mana = 293+level*7;
 	this->forca = 0;
 	this->defesa = 84+level;
 	this->magia = 145+level*3;
@@ -79,22 +79,22 @@ void Mago::imprimirData() const{
 
 void Mago::equiparCajado(){
 	
-	this->magia += cajadoMistico.Magia();
-	this->defesaEspecial += cajadoMistico.DefEsp();
+	this->magia += cajadoMistico.magiaDoCajado();
+	this->defesaEspecial += cajadoMistico.defEspDoCajado();
 }
 
-void Mago::verificarStatus(){
+const void Mago::verificarStatus(const Mago &m){
 	
-	cout << "\n                          Status do Mago " << nome << "\n\n";
-	cajadoMistico.print();
-	cout << setw(38) << "Level " << setw(5) << level <<'\n';
-	cout << setw(38) << "Forca " << setw(5) << forca <<'\n';
-	cout << setw(38) << "Defesa " << setw(5) << defesa <<'\n';
-	cout << setw(38) << "Magia " << setw(5) << magia <<'\n';
-	cout << setw(38) <<"Defesa Especial " << setw(5) << defesaEspecial <<'\n' << endl;
-	cout << setw(38) <<"HP " << setw(5) << hp <<'\n';
-	cout << setw(38) <<"Mana " << setw(5) << mana <<"\n\n";
-	imprimirData();
+	cout << "\n                          Status do Mago " << m.nome << "\n\n";
+	m.cajadoMistico.print();
+	cout << setw(38) << "Level " << setw(5) << m.level <<'\n';
+	cout << setw(38) << "Forca " << setw(5) << m.forca <<'\n';
+	cout << setw(38) << "Defesa " << setw(5) << m.defesa <<'\n';
+	cout << setw(38) << "Magia " << setw(5) << m.magia <<'\n';
+	cout << setw(38) <<"Defesa Especial " << setw(5) << m.defesaEspecial <<'\n' << endl;
+	cout << setw(38) <<"HP " << setw(5) << m.hp <<'\n';
+	cout << setw(38) <<"Mana " << setw(5) << m.mana <<"\n\n";
+	m.imprimirData();
 	srand(time(NULL));
 }
 
@@ -166,8 +166,6 @@ bool Mago::atacar(){
 				cout << "HP do inimigo: " << monstro.hp_ini << endl;
 				cout << "Inimigo derrotado!" << endl << endl;
 				ganharXP(xp);
-				Mago(nome,level,nItens);
-				verificarStatus();
 			}
 			else{
 				cout << "-" << dano << " de dano no inimigo\n" << endl;
@@ -224,13 +222,26 @@ void Mago::ganharXP(bool xp){
 	if(xp){
 		level++;
 		cout << "Subida de nivel!\n" << endl;
-		hp += 2;
-		mana += 3;
-		forca += 0;
+		hp = 195+level*5;
+		mana = 293+level*7;
 		defesa += 1;
 		magia += 3;
 		defesaEspecial += 2;
 	}
+}
+
+bool Mago::verificarItem(){
+	
+	system("cls");
+	sucesso = rand()%2;
+	if(sucesso){
+		guardarItem();
+	}
+	else{
+		cout << "Nao ha item no chao!" << endl;
+	}
+	cout << '\n';
+	system("pause");
 }
 
 void Mago::guardarItem(){
@@ -244,18 +255,6 @@ void Mago::guardarItem(){
 	}
 	else{
 		cout << "Inventario cheio!\n\n";
-	}
-}
-
-bool Mago::verificarItem(){
-	
-	system("cls");
-	sucesso = rand()%2;
-	if(sucesso){
-		guardarItem();
-	}
-	else{
-		cout << "Nao ha item no chao!" << endl;
 	}
 }
 
