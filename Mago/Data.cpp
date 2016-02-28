@@ -34,5 +34,5 @@ int Data::checarDia(int dia) const{
 
 void Data::print() const{
     
-	cout << setw(38) << "Data de Formacao Magica " << setw(3) << dia << "/" << mes << "/" << ano << endl << endl;
+	cout << setw(38) << "Data de Formacao Magica " << setw(4) << dia << "/" << mes << "/" << ano << endl << endl;
 }
