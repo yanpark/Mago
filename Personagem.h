@@ -45,4 +45,9 @@ class Personagem{
 	    int aux;
         static int numeroDePersonagens;
 };
+typedef struct{
+	int hp_ini = 125;
+	int forca_ini = 98 ;
+	int def_esp_ini = 95;	
+} Inimigo;
 #endif // MAGO_H

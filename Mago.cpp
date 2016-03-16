@@ -10,15 +10,23 @@ using std::setw;
 
 Inimigo monstro;
 
+int Mago::numeroDeMagos = 0;
+
 Mago::Mago(const string &nome, int level, const int &nItens):Personagem(nome,level,nItens){
     
     this->magia = 145+level*3;
     this->mana = 293+level*7;
+    numeroDeMagos++;
 }
 
 Mago::~Mago(){
 	delete [] nomeItens;
 	delete [] ptr_inventario;
+}
+
+void Mago::imprimirData() const{
+	
+	dataFormacaoMagica.print();
 }
 
 void Mago::equiparCajado(){

@@ -22,6 +22,7 @@ Personagem::Personagem(const string &nome, int level, const int &nItens){
 	this->itemInventario = 7;
 	this->cont = 0;
     numeroDePersonagens++;
+    srand(time(NULL));
 	
 	if(nItens>0){
 		nomeItens = new string[nItens];
@@ -58,9 +59,12 @@ ostream &operator<<(ostream &output, const Personagem &persDeFora){
 
 bool Personagem::operator==(const Personagem &persDeFora) const{
 	
-	if((nome != persDeFora.nome) || (level != persDeFora.level)){
-		return false;
-	}
+	if(nome != persDeFora.nome) return false;
+	if(level != persDeFora.level) return false;
+	if(hp != persDeFora.hp) return false;
+	if(defesa != persDeFora.defesa) return false;
+	if(defesaEspecial != persDeFora.defesaEspecial) return false;
+	if(nItens != persDeFora.nItens) return false;
 	return true;
 }
 
@@ -71,7 +75,6 @@ const void Personagem::verificarStatus(const Personagem &p){
 	cout << setw(38) << "Defesa " << setw(5) << p.defesa <<'\n';
 	cout << setw(38) <<"Defesa Especial " << setw(5) << p.defesaEspecial <<'\n' << endl;
 	cout << setw(38) <<"HP " << setw(5) << p.hp <<'\n';
-	srand(time(NULL));
 }
 
 void Personagem::ganharXP(bool xp){

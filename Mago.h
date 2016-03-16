@@ -26,16 +26,11 @@ class Mago : public Personagem{
 		const Mago &operator=(const Mago &);
 		bool operator==(const Mago &) const;
 		
-	private:
+	protected:
 	    int magia;
 	    int mana;
-	    static int numerodeMagos;
+	    static int numeroDeMagos;
 	    const Data dataFormacaoMagica;
 	    Cajado cajadoMistico;
 };
-typedef struct{
-	int hp_ini = 125;
-	int forca_ini = 98 ;
-	int def_esp_ini = 95;	
-} Inimigo;
 #endif
