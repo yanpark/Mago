@@ -25,4 +25,5 @@ class Ranger : public Guerreiro{
         int upForca;
         int upHP;
 };
+
 #endif

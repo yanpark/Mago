@@ -18,3 +18,21 @@ Ranger::Ranger(const string &nome, int level, const int &nItens):Guerreiro(nome,
 
 Ranger::~Ranger(){
 }
+
+ostream &operator<<(ostream &output, const Ranger &rangDeFora){
+	
+	output << rangDeFora.nome <<"\nLevel: " << rangDeFora.level << endl << endl;
+	return output;
+}
+
+bool Ranger::operator==(const Ranger &rangDeFora) const{
+	
+	if(nome != rangDeFora.nome) return false;
+	if(level != rangDeFora.level) return false;
+	if(upHP != rangDeFora.upHP) return false;
+	if(defesa != rangDeFora.defesa) return false;
+	if(defesaEspecial != rangDeFora.defesaEspecial) return false;
+	if(nItens != rangDeFora.nItens) return false;
+	if(upForca != rangDeFora.upForca) return false;
+	return true;
+}
