@@ -16,10 +16,11 @@ class Guerreiro : public Personagem{
 	public:
 	    Guerreiro(const string &, int, const int &);
 		
-        void menuPrincipal();
+        virtual void menuPrincipal();
         bool batalharGuerreiro();
 		bool atacarComGuerreiro();
 		bool defenderComGuerreiro();
+		virtual void imprimirData() const;
 		void equiparEspada();
 		
 		const Guerreiro &operator=(const Guerreiro &);

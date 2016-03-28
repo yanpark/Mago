@@ -20,8 +20,6 @@ Mago::Mago(const string &nome, int level, const int &nItens):Personagem(nome,lev
 }
 
 Mago::~Mago(){
-	delete [] nomeItens;
-	delete [] ptr_inventario;
 }
 
 void Mago::imprimirData() const{
@@ -33,6 +31,25 @@ void Mago::equiparCajado(){
 	
 	this->magia += cajadoMistico.magiaDoCajado();
 	this->defesaEspecial += cajadoMistico.defEspDoCajado();
+}
+
+ostream &operator<<(ostream &output, const Mago &magoDeFora){
+	
+	output << magoDeFora.nome <<"\nLevel: " << magoDeFora.level << endl << endl;
+	return output;
+}
+
+bool Mago::operator==(const Mago &magoDeFora) const{
+	
+	if(nome != magoDeFora.nome) return false;
+	if(level != magoDeFora.level) return false;
+	if(hp != magoDeFora.hp) return false;
+	if(defesa != magoDeFora.defesa) return false;
+	if(defesaEspecial != magoDeFora.defesaEspecial) return false;
+	if(nItens != magoDeFora.nItens) return false;
+	if(mana != magoDeFora.mana) return false;
+	if(magia != magoDeFora.level) return false;
+	return true;
 }
 
 void Mago::menuPrincipal(){

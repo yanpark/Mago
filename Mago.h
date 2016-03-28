@@ -17,10 +17,11 @@ class Mago : public Personagem{
 	    Mago(const string &, int, const int &);
 		~Mago();
 		
-        void menuPrincipal();
+        virtual void menuPrincipal();
         bool batalharMago();
 		bool atacarComMago();
 		bool defenderComMago();
+		virtual void imprimirData() const;
 		void equiparCajado();
 		
 		const Mago &operator=(const Mago &);

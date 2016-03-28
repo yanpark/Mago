@@ -28,6 +28,24 @@ void Guerreiro::equiparEspada(){
 	this->forca += espadaExcalibur.forcaDaEspada();
 }
 
+ostream &operator<<(ostream &output, const Guerreiro &guerreiroDeFora){
+	
+	output << guerreiroDeFora.nome <<"\nLevel: " << guerreiroDeFora.level << endl << endl;
+	return output;
+}
+
+bool Guerreiro::operator==(const Guerreiro &guerreiroDeFora) const{
+	
+	if(nome != guerreiroDeFora.nome) return false;
+	if(level != guerreiroDeFora.level) return false;
+	if(hp != guerreiroDeFora.hp) return false;
+	if(defesa != guerreiroDeFora.defesa) return false;
+	if(defesaEspecial != guerreiroDeFora.defesaEspecial) return false;
+	if(nItens != guerreiroDeFora.nItens) return false;
+	if(forca != guerreiroDeFora.forca) return false;
+	return true;
+}
+
 void Guerreiro::menuPrincipal(){
 	
 	system("cls");

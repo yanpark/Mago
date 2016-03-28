@@ -11,7 +11,7 @@ using std::cout;
 int main(int argc, char **argv){
 	
 	Mago luz("Gandalf", 1, 5);
-	Mago trevas("Gandalf", 1, 5);
+	Mago trevas("Saruman", 1, 5);
 	Guerreiro g1("Auros", 1, 5);
 	
 	cout << "Mago de luz: " << luz;

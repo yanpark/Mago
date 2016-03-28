@@ -17,3 +17,5 @@ Wizard::Wizard(const string &nome, int level, const int &nItens):Mago(nome,level
     this->upMagia = magia + 30;
 }
 
+Wizard::~Wizard(){
+}

@@ -19,7 +19,8 @@ class Personagem{
 		void ganharXP(bool);
 		bool verificarItem();
 		void inventario();
-		void imprimirData() const;
+		virtual void menuPrincipal() = 0;
+		virtual void imprimirData() const = 0;
 		void guardarItem();
 		
 		const Personagem &operator=(const Personagem &);
