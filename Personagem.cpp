@@ -68,6 +68,9 @@ bool Personagem::operator==(const Personagem &persDeFora) const{
 	return true;
 }
 
+void Personagem::imprimirData() const{
+}
+
 const void Personagem::verificarStatus(const Personagem &p){
 	
 	cout << "\n                          Status do Personagem " << p.nome << "\n\n";
