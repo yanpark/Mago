@@ -4,9 +4,7 @@
 #include <time.h>
 #include"Mago.h"
 
-using std::cout;
-using std::string;
-using std::setw;
+using namespace std;
 
 Inimigo monstro;
 

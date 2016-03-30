@@ -4,9 +4,7 @@
 #include <time.h>
 #include"Guerreiro.h"
 
-using std::cout;
-using std::string;
-using std::setw;
+using namespace std;
 
 Inimigo m;
 

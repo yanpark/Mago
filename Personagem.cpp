@@ -101,7 +101,6 @@ bool Personagem::verificarItem(){
 	}
 	cout << '\n';
 	system("pause");
-    return sucesso;
 }
 
 void Personagem::guardarItem(){

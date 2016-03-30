@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <stdlib.h>
 #include"Personagem.h"
 #include"Mago.h"
@@ -11,39 +12,34 @@ using std::cout;
 
 int main(int argc, char **argv){
 	
-	Wizard luz("Gandalf", 1, 5);
-	Wizard trevas("Saruman", 10, 5);
+	Wizard m1("Gandalf", 1, 5);
+	Wizard m2("Saruman", 10, 5);
 	Ranger g1("Auros", 1, 5);
     Ranger g2("Soris", 1, 5);
 	
-	cout << "Mago de luz: " << luz;
-	cout << "Mago de trevas: " << trevas;
+	vector < Personagem * > personagens(4);
     
-    cout << "Guerreiro g1: " << g1;
-    cout << "Guerreiro g2: " << g2;
-	
-	if(luz == trevas){
-		cout << "Os magos sao iguais\n" << endl;
-	}
-	else{
-		cout << "Os magos nao sao iguais\n" << endl;
-	}
-	
-    if(g1 == g2){
-		cout << "Os guerreiros sao iguais\n" << endl;
-	}
-	else{
-		cout << "Os guerreiros nao sao iguais\n" << endl;
-	}
+    personagens.push_back(&m1);
+    personagens.push_back(&m2);
+    personagens.push_back(&g1);
+    personagens.push_back(&g2);
     
-	Mago::verificarStatus(luz);
+    system("pause");
+	system("cls");
+	Mago::verificarStatus(m1);
+    system("pause");
+	system("cls");
+    Mago::verificarStatus(m2);
     system("pause");
 	system("cls");
 	Guerreiro::verificarStatus(g1);
 	system("pause");
 	system("cls");
-	g1.menuPrincipal();
+    Guerreiro::verificarStatus(g2);
+	system("pause");
 	system("cls");
-	Guerreiro::verificarStatus(g1);
+    g1.menuPrincipal();
+	system("cls");
+    Guerreiro::verificarStatus(g1);
 	return 0;
 }
