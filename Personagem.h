@@ -1,8 +1,9 @@
+#include <iostream>
+#include <string>
+
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
-#include <iostream>
-#include <string>
 using namespace std;
 
 class Personagem{
@@ -11,44 +12,48 @@ class Personagem{
     
     public:
         
-        Personagem(const string &, int, const int &);
+        Personagem(const string &, int);
 	    Personagem(const Personagem &);
 	    ~Personagem();
 
-        static const void verificarStatus(const Personagem &); 
+        void menuPrincipal();
 		void ganharXP(bool);
 		bool verificarItem();
 		void inventario();
-		virtual void menuPrincipal() = 0;
+        void guardarItem();
+        virtual void verificarStatus() = 0;
+        virtual void batalhar() = 0;
+        virtual void atacar() = 0;
+		virtual void defender() = 0;
 		virtual void imprimirData() const = 0;
-		void guardarItem();
 		
 		const Personagem &operator=(const Personagem &);
 		bool operator==(const Personagem &) const;
 		
 	protected:
 		string nome;
+        int hp;
+        int level;
 		int defesa; // resistência a ataques físicos
 	    int defesaEspecial; // resistência a ataques mágico
         string item;
-	    int hp;
-	    int level;
 	    int opcao;
 	    int dano;
+        bool xp;
 	    bool sucesso;
-	    bool xp;
-	    string *ptr_inventario;
-	    string *nomeItens;
 	    int itemInventario;
 	    int cont;
 	    int quantItens;
-	    int nItens;
 	    int aux;
         static int numeroDePersonagens;
+        string *ptr_inventario;
+	    string *nomeItens;
 };
+
 typedef struct{
-	int hp_ini = 125;
-	int forca_ini = 98 ;
-	int def_esp_ini = 95;	
-} Inimigo;
-#endif // MAGO_H
+    int hp_ini = 150;
+    int forca_ini = 110;
+    int def_esp_ini = 120;	
+}Inimigo;
+
+#endif

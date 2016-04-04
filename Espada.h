@@ -12,7 +12,7 @@ class Espada{
 		int forcaDaEspada();
 		void print() const;
 		
-	private:
+	protected:
 		int forca;
 };
 #endif

@@ -6,19 +6,18 @@
 
 using namespace std;
 
-Inimigo m;
+Inimigo m2;
 
-int Guerreiro::numeroDeGuerreiros = 0;
-
-Guerreiro::Guerreiro(const string &nome, int level, const int &nItens):Personagem(nome,level,nItens){
+Guerreiro::Guerreiro(const string &nome, int level):Personagem(nome,level){
     
     this->forca = 157+level*3;
-    numeroDeGuerreiros++;
+    equiparEspada();
 }
 
 void Guerreiro::imprimirData() const{
 	
-	dataFormacaoDoGuerreiro.print();
+	cout << setw(38) << "Data de Formacao do Guerreiro ";
+    dataFormacaoDoGuerreiro.print();
 }
 
 void Guerreiro::equiparEspada(){
@@ -39,32 +38,14 @@ bool Guerreiro::operator==(const Guerreiro &guerreiroDeFora) const{
 	if(hp != guerreiroDeFora.hp) return false;
 	if(defesa != guerreiroDeFora.defesa) return false;
 	if(defesaEspecial != guerreiroDeFora.defesaEspecial) return false;
-	if(nItens != guerreiroDeFora.nItens) return false;
 	if(forca != guerreiroDeFora.forca) return false;
 	return true;
 }
 
-void Guerreiro::menuPrincipal(){
-	
-	system("cls");
-	cout << "Numero de Personagens = " << numeroDePersonagens << endl << endl;
-	cout << "Personagem " << nome << endl << endl;
-	
-	cout << "1. Entrar em batalha" << endl;
-	cout << "0. Recolher item\n" << endl;
-	cout << "Escolha uma das opcoes acima: ";
-	cin >> opcao;
-	switch(opcao){
-		case 0: verificarItem();
-				break;
-		case 1: batalharGuerreiro();
-				break;
-		default: cout << "\n\nOpcao invalida.\n" << endl;
-				break;
-	}
+void Guerreiro::verificarStatus(){
 }
 
-bool Guerreiro::batalharGuerreiro(){
+void Guerreiro::batalhar(){
 	
 	do{
 		system("cls");
@@ -75,39 +56,39 @@ bool Guerreiro::batalharGuerreiro(){
 		cin >> opcao;
 		system("cls");
 		switch(opcao){
-			case 0: defenderComGuerreiro();
-					break;
-			case 1: atacarComGuerreiro();
-					if(hp>0 && m.hp_ini>0){
-						defenderComGuerreiro();
-					}
-					break;
+			case 0: defender();
+                    break;
+			case 1: atacar();
+                    if(hp>0 && m2.hp_ini>0){
+                        defender();
+                    }
+                    break;
 			default: cout << "\n\nOpcao invalida.\n" << endl;
-					break;
+                    break;
 		}
 		
 	}
-	while((hp>0 && m.hp_ini>0) && (opcao==0 || opcao==1));
+	while((hp>0 && m2.hp_ini>0) && (opcao==0 || opcao==1));
 };
 
-bool Guerreiro::atacarComGuerreiro(){
+void Guerreiro::atacar(){
 	
 	cout << nome << " atacou o inimigo\n" << endl;
 	sucesso = rand()%2;
 	if(sucesso){
 		cout << "Ataque bem sucedido!" << endl;
-		if(forca<=m.def_esp_ini){
-			dano = (m.def_esp_ini/(m.def_esp_ini-forca))/2;
+		if(forca<=m2.def_esp_ini){
+			dano = (m2.def_esp_ini/(m2.def_esp_ini-forca))/2;
 		}
-		else if(forca>m.def_esp_ini){
-			dano = (forca-m.def_esp_ini)*2;
+		else if(forca>m2.def_esp_ini){
+			dano = (forca-m2.def_esp_ini)*2;
 		}
-		m.hp_ini -= dano;
-		if(m.hp_ini <= 0){
-			dano += m.hp_ini;
+		m2.hp_ini -= dano;
+		if(m2.hp_ini <= 0){
+			dano += m2.hp_ini;
 			cout << "-" << dano << " de dano no inimigo\n" << endl;
-			m.hp_ini = 0;
-			cout << "HP do inimigo: " << m.hp_ini << endl;
+			m2.hp_ini = 0;
+			cout << "HP do inimigo: " << m2.hp_ini << endl;
 			cout << "Inimigo derrotado!" << endl << endl;
 			ganharXP(xp);
 		}
@@ -121,7 +102,7 @@ bool Guerreiro::atacarComGuerreiro(){
 	system("pause");
 }
 
-bool Guerreiro::defenderComGuerreiro(){
+void Guerreiro::defender(){
 	
 	system("cls");
 	cout << nome << " armou a defesa\n" << endl;
@@ -131,11 +112,11 @@ bool Guerreiro::defenderComGuerreiro(){
 	}
 	else{
 		cout << nome << " sofreu dano!" << endl;
-		if(m.forca_ini<=defesa){
-			dano = (defesa/(defesa-m.forca_ini))/2;
+		if(m2.forca_ini<=defesa){
+			dano = (defesa/(defesa-m2.forca_ini))/2;
 		}
-		else if(m.forca_ini>defesa){
-			dano = (m.forca_ini-defesa)*2;
+		else if(m2.forca_ini>defesa){
+			dano = (m2.forca_ini-defesa)*2;
 		}
 		hp -= dano;
 		if(hp > 0){
@@ -149,6 +130,6 @@ bool Guerreiro::defenderComGuerreiro(){
 		}
 	}
 	cout << "HP de " << nome << ": " << hp << endl;
-	cout << "HP do inimigo: " << m.hp_ini << endl << endl;
+	cout << "HP do inimigo: " << m2.hp_ini << endl << endl;
 	system("pause");
 }

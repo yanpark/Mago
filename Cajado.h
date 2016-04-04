@@ -13,7 +13,7 @@ class Cajado{
 		int defEspDoCajado();
 		void print() const;
 		
-	private:
+	protected:
 		int magia;
 		int defesaEspecial;
 };

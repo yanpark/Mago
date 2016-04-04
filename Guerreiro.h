@@ -14,12 +14,12 @@ class Guerreiro : public Personagem{
     friend ostream &operator<<(ostream &, const Guerreiro &);
     
 	public:
-	    Guerreiro(const string &, int, const int &);
+	    Guerreiro(const string &, int);
 		
-        virtual void menuPrincipal();
-        bool batalharGuerreiro();
-		bool atacarComGuerreiro();
-		bool defenderComGuerreiro();
+        virtual void verificarStatus();
+        virtual void batalhar();
+		virtual void atacar();
+		virtual void defender();
 		virtual void imprimirData() const;
 		void equiparEspada();
 		
@@ -28,7 +28,6 @@ class Guerreiro : public Personagem{
 		
 	protected:
 	    int forca;
-	    static int numeroDeGuerreiros;
 	    const Data dataFormacaoDoGuerreiro;
 	    Espada espadaExcalibur;
 };

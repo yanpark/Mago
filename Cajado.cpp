@@ -12,7 +12,7 @@ Cajado::Cajado(){
 
 void Cajado::print() const{
 	
-	cout << setw(38) << "Cajado Mistico " << setw(9) << "Magia +" << magia << "\n" << setw(57) << "Defesa Especial +" << defesaEspecial << endl << endl; 
+	cout << setw(38) << "Cajado " << setw(9) << "Magia +" << magia << "\n" << setw(57) << "Defesa Especial +" << defesaEspecial << endl << endl; 
 }
 
 int Cajado::magiaDoCajado(){

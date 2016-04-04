@@ -11,7 +11,7 @@ Espada::Espada(){
 
 void Espada::print() const{
 	
-	cout << setw(38) << "Espada Excalibur " << setw(9) << "Forca +" << forca << "\n" << setw(57) << endl << endl; 
+	cout << setw(38) << "Espada Excalibur " << setw(9) << "Forca +" << forca << "\n" << setw(57) << endl; 
 }
 
 int Espada::forcaDaEspada(){

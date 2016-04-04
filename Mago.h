@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include"Data.h"
-#include"Cajado.h"
+#include"Livro.h"
 #include"Personagem.h"
 
 using namespace std;
@@ -14,15 +14,15 @@ class Mago : public Personagem{
     friend ostream &operator<<(ostream &, const Mago &);
     
 	public:
-	    Mago(const string &, int, const int &);
+	    Mago(const string &, int);
 		~Mago();
 		
-        virtual void menuPrincipal();
-        bool batalharMago();
-		bool atacarComMago();
-		bool defenderComMago();
+        virtual void batalhar();
+        virtual void atacar();
+        virtual void defender();
 		virtual void imprimirData() const;
-		void equiparCajado();
+        virtual int aumentarMana() = 0;
+		void equiparLivro();
 		
 		const Mago &operator=(const Mago &);
 		bool operator==(const Mago &) const;
@@ -30,8 +30,9 @@ class Mago : public Personagem{
 	protected:
 	    int magia;
 	    int mana;
-	    static int numeroDeMagos;
+        int contEspecial;
+        int auxHP;
 	    const Data dataFormacaoMagica;
-	    Cajado cajadoMistico;
+	    Livro livroDasProfecias;
 };
 #endif

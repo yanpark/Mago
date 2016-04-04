@@ -9,6 +9,7 @@
 #include"Data.h"
 
 #include"Wizard.h"
+#include"Sorcerer.h"
 #include"Ranger.h"
 
 using std::cout;
@@ -16,54 +17,55 @@ using std::cout;
 int main(int argc, char **argv){
     int opcao;
 	
-	Wizard m1("Gandalf", 1, 5);
-	Ranger g1("Auros", 1, 5);
+	Wizard w1("Gandalf", 1);
+    Sorcerer s1("Soris", 1);
+	Ranger r1("Auros", 1);
 	
-	vector < Personagem * > personagens(4);
-    
-    personagens.push_back(&m1);
-    personagens.push_back(&g1);
+	vector < Personagem * > personagens(3);
     
     cout << "Escolha o personagem: " << endl << endl;
-    cout << "1 - Wizard Gandalf" << endl;
-    cout << "2 - Ranger Auros " << endl << endl;
+    cout << "1 - Mago " << endl;
+    cout << "2 - Guerreiro Ranger " << endl << endl;
     cout << "Opcao: ";
     cin >> opcao;
-    system("cls");
     
-    switch(opcao){
-		case 1: Wizard::verificarStatus(m1);
-                system("pause");
-                system("cls");
-                m1.menuPrincipal();
-                system("cls");
-                Wizard::verificarStatus(m1);
-				break;
-		case 2: Ranger::verificarStatus(g1);
-                system("pause");
-                system("cls");
-                g1.menuPrincipal();
-                system("cls");
-                Ranger::verificarStatus(g1);
-				break;
-		default: cout << "\n\nOpcao invalida.\n" << endl;
-				break;
-	}
-    
-    personagens[opcao] -> menuPrincipal();
-    personagens[opcao] -> imprimirData();
-    
-    for(size_t i = 0; i < personagens.size(); i++){
-	
-        Wizard *derivedPtr = dynamic_cast<Wizard*> (personagens[i]);
-        Ranger *derivedPtr2 = dynamic_cast<Ranger*> (personagens[i]);
+	system("cls");
+    if(opcao == 1){
         
-        if (derivedPtr != 0){
-            derivedPtr -> verificarStatus(m1);
+        cout << "Escolha o Mago: " << endl << endl;
+        cout << "1 - Wizard" << endl;
+        cout << "2 - Sorcerer " << endl << endl;
+        cout << "Opcao: ";
+        cin >> opcao;
+        
+        if(opcao == 1){
+            
+            w1.verificarStatus();
+            system("pause");
+            system("cls");
+            w1.menuPrincipal();
+            system("cls");
+            w1.verificarStatus();
         }
-        if (derivedPtr2 != 0){
-            derivedPtr -> verificarStatus(g1);
+        else if(opcao == 2){
+            s1.verificarStatus();
+            system("pause");
+            system("cls");
+            s1.menuPrincipal();
+            system("cls");
+            s1.verificarStatus();
         }
+    }
+    else if(opcao == 2){
+        r1.verificarStatus();
+        system("pause");
+        system("cls");
+        r1.menuPrincipal();
+        system("cls");
+        r1.verificarStatus();
+    }
+    else{
+        cout << "\n\nOpcao invalida" << endl;
     }
     return 0;
 }

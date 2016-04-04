@@ -6,11 +6,9 @@
 #include"Guerreiro.h"
 #include"Ranger.h"
 
-using std::cout;
-using std::string;
-using std::setw;
+using namespace std;
 
-Ranger::Ranger(const string &nome, int level, const int &nItens):Guerreiro(nome,level,nItens){
+Ranger::Ranger(const string &nome, int level):Guerreiro(nome,level){
     
     this->upForca = forca + 30;
     this->upHP = hp + 20;
@@ -32,7 +30,18 @@ bool Ranger::operator==(const Ranger &rangDeFora) const{
 	if(upHP != rangDeFora.upHP) return false;
 	if(defesa != rangDeFora.defesa) return false;
 	if(defesaEspecial != rangDeFora.defesaEspecial) return false;
-	if(nItens != rangDeFora.nItens) return false;
 	if(upForca != rangDeFora.upForca) return false;
 	return true;
+}
+
+void Ranger::verificarStatus(){
+	
+	cout << "\n                        Status do Ranger " << nome << "\n\n";
+    espadaExcalibur.print();
+	cout << setw(38) << "Level " << setw(5) << level <<'\n';
+    cout << setw(38) << "Forca " << setw(5) << forca <<'\n';
+	cout << setw(38) << "Defesa " << setw(5) << defesa <<'\n';
+	cout << setw(38) <<"Defesa Especial " << setw(5) << defesaEspecial <<'\n' << endl;
+	cout << setw(38) <<"HP " << setw(5) << hp <<'\n' << endl;
+    imprimirData();
 }

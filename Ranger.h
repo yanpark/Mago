@@ -15,9 +15,11 @@ class Ranger : public Guerreiro{
     friend ostream &operator<<(ostream &, const Ranger &);
     
 	public:
-	    Ranger(const string &, int, const int &);
+	    Ranger(const string &, int);
 		~Ranger();
 		
+        virtual void verificarStatus();
+        
 		const Ranger &operator=(const Ranger &);
 		bool operator==(const Ranger &) const;
 		

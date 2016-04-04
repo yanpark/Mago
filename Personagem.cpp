@@ -4,35 +4,33 @@
 #include <time.h>
 #include"Personagem.h"
 
-using std::cout;
-using std::string;
-using std::setw;
+using namespace std;
 
 int Personagem::numeroDePersonagens = 0;
 
-Personagem::Personagem(const string &nome, int level, const int &nItens){
+Personagem::Personagem(const string &nome, int level){
 	
 	this->nome = nome;
 	this->level = level;
 	this->hp = 195+level*5;
 	this->defesa = 84+level;
 	this->defesaEspecial = 115+level*2;
-	this->nItens = nItens;
+	this->quantItens = 40;
 	this->aux = 0;
 	this->itemInventario = 7;
 	this->cont = 0;
+    inventario();
     numeroDePersonagens++;
     srand(time(NULL));
 	
-	if(nItens>0){
-		nomeItens = new string[nItens];
-		quantItens = nItens;
+	if(quantItens>0){
+		nomeItens = new string[quantItens];
 		cout << "Espaco de itens no inventario de " << nome << ": " << quantItens << "\n\n";
 	}
 	else{
 		nomeItens = 0;
-		quantItens = 0;
-		cout << "Tamanho invalido\n\n";
+        quantItens = 0;
+
 	}
 }
 
@@ -43,7 +41,6 @@ Personagem::Personagem(const Personagem &persDeFora){
 	hp = persDeFora.hp;
 	defesa = persDeFora.defesa;
 	defesaEspecial = persDeFora.defesaEspecial;
-	nItens = persDeFora.nItens;
 }
 
 Personagem::~Personagem(){
@@ -64,20 +61,33 @@ bool Personagem::operator==(const Personagem &persDeFora) const{
 	if(hp != persDeFora.hp) return false;
 	if(defesa != persDeFora.defesa) return false;
 	if(defesaEspecial != persDeFora.defesaEspecial) return false;
-	if(nItens != persDeFora.nItens) return false;
 	return true;
 }
 
 void Personagem::imprimirData() const{
 }
 
-const void Personagem::verificarStatus(const Personagem &p){
+void Personagem::menuPrincipal(){
+    
+    system("cls");
+	cout << "Numero de Personagens = " << numeroDePersonagens << endl << endl;
+	cout << "Personagem " << nome << endl << endl;
 	
-	cout << "\n                          Status do Personagem " << p.nome << "\n\n";
-	cout << setw(38) << "Level " << setw(5) << p.level <<'\n';
-	cout << setw(38) << "Defesa " << setw(5) << p.defesa <<'\n';
-	cout << setw(38) <<"Defesa Especial " << setw(5) << p.defesaEspecial <<'\n' << endl;
-	cout << setw(38) <<"HP " << setw(5) << p.hp <<'\n';
+	cout << "1. Entrar em batalha" << endl;
+	cout << "0. Recolher item\n" << endl;
+	cout << "Escolha uma das opcoes acima: ";
+	cin >> opcao;
+	switch(opcao){
+		case 0: verificarItem();
+				break;
+		case 1: batalhar();
+				break;
+		default: cout << "\n\nOpcao invalida.\n" << endl;
+				break;
+	}
+    
+}
+void Personagem::verificarStatus(){
 }
 
 void Personagem::ganharXP(bool xp){
@@ -104,11 +114,12 @@ bool Personagem::verificarItem(){
 	}
 	cout << '\n';
 	system("pause");
+    return sucesso;
 }
 
 void Personagem::guardarItem(){
 	
-	if(aux >= 0 && aux < quantItens){
+	if(cont >= 0 && cont < quantItens){
 		aux = rand()%itemInventario;
 		nomeItens[cont] = ptr_inventario[aux];
 		cout << "Item recolhido!\n" << endl;
