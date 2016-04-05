@@ -12,8 +12,8 @@ Inimigo m1;
 
 Wizard::Wizard(const string &nome, int level):Mago(nome,level){
     
-    this->hp = hp + 10;
-    this->magia = magia + 30;
+    this->hp += 10;
+    this->magia += 30;
     equiparCajado();
     this->auxHP = hp;
 }

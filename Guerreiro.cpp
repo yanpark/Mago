@@ -133,3 +133,16 @@ void Guerreiro::defender(){
 	cout << "HP do inimigo: " << m2.hp_ini << endl << endl;
 	system("pause");
 }
+
+void Guerreiro::ganharXP(bool){
+    
+    xp = rand()%2;
+	if(xp){
+		level++;
+		cout << "Subida de nivel!\n" << endl;
+		hp = 190+level*10;
+        forca += 3;
+		defesa += 1;
+		defesaEspecial += 2;
+	}
+}

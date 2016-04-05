@@ -20,6 +20,7 @@ class Guerreiro : public Personagem{
         virtual void batalhar();
 		virtual void atacar();
 		virtual void defender();
+        virtual void ganharXP(bool);
 		virtual void imprimirData() const;
 		void equiparEspada();
 		

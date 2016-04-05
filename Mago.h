@@ -20,6 +20,7 @@ class Mago : public Personagem{
         virtual void batalhar();
         virtual void atacar();
         virtual void defender();
+        virtual void ganharXP(bool);
 		virtual void imprimirData() const;
         virtual int aumentarMana() = 0;
 		void equiparLivro();

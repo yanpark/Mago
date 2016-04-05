@@ -12,7 +12,7 @@ Personagem::Personagem(const string &nome, int level){
 	
 	this->nome = nome;
 	this->level = level;
-	this->hp = 195+level*5;
+	this->hp = 190+level*10;
 	this->defesa = 84+level;
 	this->defesaEspecial = 115+level*2;
 	this->quantItens = 40;
@@ -73,33 +73,26 @@ void Personagem::menuPrincipal(){
 	cout << "Numero de Personagens = " << numeroDePersonagens << endl << endl;
 	cout << "Personagem " << nome << endl << endl;
 	
-	cout << "1. Entrar em batalha" << endl;
-	cout << "0. Recolher item\n" << endl;
-	cout << "Escolha uma das opcoes acima: ";
-	cin >> opcao;
-	switch(opcao){
-		case 0: verificarItem();
-				break;
-		case 1: batalhar();
-				break;
-		default: cout << "\n\nOpcao invalida.\n" << endl;
-				break;
-	}
-    
+    do{
+        cout << "1. Entrar em batalha" << endl;
+        cout << "0. Recolher item\n" << endl;
+        cout << "Escolha uma das opcoes acima: ";
+        cin >> opcao;
+        switch(opcao){
+            case 0: verificarItem();
+                    break;
+            case 1: batalhar();
+                    break;
+            default: cout << "\n\nOpcao invalida.\n" << endl;
+                    break;
+        }
+    }
+    while(opcao==0);
 }
 void Personagem::verificarStatus(){
 }
 
 void Personagem::ganharXP(bool xp){
-	
-	xp = rand()%2;
-	if(xp){
-		level++;
-		cout << "Subida de nivel!\n" << endl;
-		hp = 195+level*5;
-		defesa += 1;
-		defesaEspecial += 2;
-	}
 }
 
 bool Personagem::verificarItem(){

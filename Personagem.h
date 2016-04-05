@@ -17,7 +17,6 @@ class Personagem{
 	    ~Personagem();
 
         void menuPrincipal();
-		void ganharXP(bool);
 		bool verificarItem();
 		void inventario();
         void guardarItem();
@@ -25,6 +24,7 @@ class Personagem{
         virtual void batalhar() = 0;
         virtual void atacar() = 0;
 		virtual void defender() = 0;
+        virtual void ganharXP(bool) = 0;
 		virtual void imprimirData() const = 0;
 		
 		const Personagem &operator=(const Personagem &);

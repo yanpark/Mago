@@ -9,21 +9,12 @@ using namespace std;
 Mago::Mago(const string &nome, int level):Personagem(nome,level){
     
     this->magia = 145+level*3;
-    this->mana = 293+level*7;
+    this->mana = 293+level*10;
     this->contEspecial = 0;
     equiparLivro();
 }
 
 Mago::~Mago(){
-}
-
-void Mago::batalhar(){
-}
-
-void Mago::atacar(){
-}
-
-void Mago::defender(){
 }
 
 void Mago::imprimirData() const{
@@ -54,4 +45,27 @@ bool Mago::operator==(const Mago &magoDeFora) const{
 	if(mana != magoDeFora.mana) return false;
 	if(magia != magoDeFora.level) return false;
 	return true;
+}
+
+void Mago::ganharXP(bool){
+    
+    xp = rand()%2;
+	if(xp){
+		level++;
+		cout << "Subida de nivel!\n" << endl;
+		hp = 190+level*10;
+        mana = 293+level*10;
+        magia += 3;
+		defesa += 1;
+		defesaEspecial += 2;
+	}
+}
+
+void Mago::batalhar(){
+}
+
+void Mago::atacar(){
+}
+
+void Mago::defender(){
 }
