@@ -24,8 +24,6 @@ class Ranger : public Guerreiro{
 		bool operator==(const Ranger &) const;
 		
     private:
-        int upForca;
-        int upHP;
 };
 
 #endif

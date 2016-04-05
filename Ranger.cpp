@@ -10,8 +10,8 @@ using namespace std;
 
 Ranger::Ranger(const string &nome, int level):Guerreiro(nome,level){
     
-    this->upForca = forca + 30;
-    this->upHP = hp + 20;
+    this->forca += 30;
+    this->hp += 20;
 }
 
 Ranger::~Ranger(){
@@ -27,10 +27,10 @@ bool Ranger::operator==(const Ranger &rangDeFora) const{
 	
 	if(nome != rangDeFora.nome) return false;
 	if(level != rangDeFora.level) return false;
-	if(upHP != rangDeFora.upHP) return false;
+	if(hp != rangDeFora.hp) return false;
+    if(forca != rangDeFora.forca) return false;
 	if(defesa != rangDeFora.defesa) return false;
 	if(defesaEspecial != rangDeFora.defesaEspecial) return false;
-	if(upForca != rangDeFora.upForca) return false;
 	return true;
 }
 

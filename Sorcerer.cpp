@@ -12,8 +12,8 @@ Inimigo m3;
 
 Sorcerer::Sorcerer(const string &nome, int level):Mago(nome,level){
     
-    this->hp = hp + 10;
-    this->mana = mana + 30;
+    this->hp += 10;
+    this->mana += 30;
     equiparVarinha();
     this->auxHP = hp;
 }
