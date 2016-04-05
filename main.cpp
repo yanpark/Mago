@@ -12,60 +12,41 @@
 #include"Sorcerer.h"
 #include"Ranger.h"
 
-using std::cout;
+using namespace std;
 
 int main(int argc, char **argv){
-    int opcao;
-	
-	Wizard w1("Gandalf", 1);
-    Sorcerer s1("Soris", 1);
-	Ranger r1("Auros", 1);
 	
 	vector < Personagem * > personagens(3);
     
-    cout << "Escolha o personagem: " << endl << endl;
-    cout << "1 - Mago " << endl;
-    cout << "2 - Guerreiro Ranger " << endl << endl;
-    cout << "Opcao: ";
-    cin >> opcao;
+    personagens[0] = new Wizard("Gandalf", 1);
+    personagens[1] = new Sorcerer("Soris", 1);
+    personagens[2] = new Ranger("Auros", 1);
     
-	system("cls");
-    if(opcao == 1){
-        
-        cout << "Escolha o Mago: " << endl << endl;
-        cout << "1 - Wizard" << endl;
-        cout << "2 - Sorcerer " << endl << endl;
-        cout << "Opcao: ";
-        cin >> opcao;
-        
-        if(opcao == 1){
-            
-            w1.verificarStatus();
-            system("pause");
-            system("cls");
-            w1.menuPrincipal();
-            system("cls");
-            w1.verificarStatus();
+    for(int i = 0; i < 3; i++){
+	
+        personagens[i] -> verificarStatus();
+        personagens[i] -> batalhar();
+        personagens[i] -> atacar();
+        personagens[i] -> defender();
+        personagens[i] -> imprimirData();
+									
+        Mago *ptr1 = dynamic_cast <Mago *> (personagens[i]);
+        if(ptr1 != 0){
+            ptr1 -> aumentarMana();
         }
-        else if(opcao == 2){
-            s1.verificarStatus();
-            system("pause");
-            system("cls");
-            s1.menuPrincipal();
-            system("cls");
-            s1.verificarStatus();
+
+        Wizard *ptr2 = dynamic_cast <Wizard *> (personagens[i]);
+        if(ptr2 != 0){
+            ptr2 -> magiaElementar();
+        }			
+
+        Sorcerer *ptr3 = dynamic_cast <Sorcerer *> (personagens[i]);
+        if(ptr3 != 0){
+            ptr3 -> magiaNegra();
         }
+        
+        cout << endl << endl;
     }
-    else if(opcao == 2){
-        r1.verificarStatus();
-        system("pause");
-        system("cls");
-        r1.menuPrincipal();
-        system("cls");
-        r1.verificarStatus();
-    }
-    else{
-        cout << "\n\nOpcao invalida" << endl;
-    }
-    return 0;
+    personagens.clear();
+	return 0;
 }
